@@ -52,10 +52,32 @@ var logHaiku = (haiku) => {
   console.log(`Syllables: ${haiku.syllables}`);
 };
 
+var getRandom = (syllables) => {
+  var clauses = fetchHaikus();
+  if (clauses.length === 0) {
+    return undefined;
+  }
+  // filter based to number of syllables
+  var filteredClauses = clauses.filter((clause) => clause.syllables === syllables);
+  // if there is any..
+  if (filteredClauses.length === 0) {
+    return undefined;
+  }
+  // ..get a random one
+  var randomi = Math.random();
+  randomi = Math.floor(randomi * filteredClauses.length);
+  return filteredClauses[randomi];
+}
+
+var getHaiku = () => {
+return getRandom(5).clause + '\n' + getRandom(7).clause + '\n' + getRandom(5).clause;
+}
+
 module.exports = {
   addHaiku,
   getAll,
   getHaiku,
   removeHaiku,
-  logHaiku
+  logHaiku,
+  getRandom
 };
