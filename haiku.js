@@ -14,7 +14,7 @@ var saveHaikus = (haikus) => {
 };
 
 var addHaiku = (clause, syllables) => {
-  var haikus = fetchHaikus(syllables);
+  var haikus = fetchHaikus();
   var haiku = {
     clause,
     syllables
@@ -47,7 +47,7 @@ var removeHaiku = (clause) => {
 };
 
 var logHaiku = (haiku) => {
-  console.log('--');
+  console.log('-------------');
   console.log(`clause: ${haiku.clause}`);
   console.log(`Syllables: ${haiku.syllables}`);
 };
